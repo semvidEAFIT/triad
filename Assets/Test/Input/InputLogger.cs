@@ -8,9 +8,9 @@ public class InputLogger : MonoBehaviour, IInputListener {
 	    InputController.Instance.Listeners.Add(this);
 	}
 
-    public void Motion(Vector2 motion)
+    public void Motion(Vector2 direction)
     {
-        Debug.Log("Motion: " + motion);
+        Debug.Log("Motion: " + direction);
     }
 
     public void Attack(EAttack[] attack)

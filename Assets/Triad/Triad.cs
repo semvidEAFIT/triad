@@ -13,6 +13,11 @@ public class Triad : MonoBehaviour, IInputListener
 
     public float speed;
 
+    public Warrior[] Warriors
+    {
+        get { return warriors; }
+    }
+
     private void Start()
     {
         InputController.Instance.Listeners.Add(this);
@@ -23,15 +28,15 @@ public class Triad : MonoBehaviour, IInputListener
         //TODO: Implement Skill Casting 
     }
 
-    public void Motion(Vector2 motion)
+    public void Motion(Vector2 direction)
     {
-        Vector3 v = new Vector3(motion.x, 0, motion.y);
-        structure.Move(v * speed, warriors);
+        Vector3 v = new Vector3(direction.x, 0, direction.y);
+        structure.Move(v * speed);
     }
 
     public void Aim(Vector2 direction)
     {
         Vector3 v = new Vector3(direction.x, 0, direction.y);
-        structure.Aim(v, warriors);
+        structure.Aim(v);
     }
 }

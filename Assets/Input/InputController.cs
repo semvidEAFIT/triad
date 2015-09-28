@@ -59,7 +59,8 @@ public class InputController : MonoBehaviour
         Vector2 aim = new Vector2(Input.GetAxis("AimX"), Input.GetAxis("AimY"));
 	    if (!gamepad && squad)
 	    {
-	        Vector2 distance = Input.mousePosition - GetSquadPosition();
+	        //Vector2 distance = Input.mousePosition - GetSquadPosition();
+	        Vector2 distance = Input.mousePosition - new Vector3(Screen.width/2f, Screen.height/2f);
 	        aim = distance;
 	    }
 	    aim = aim.normalized;
