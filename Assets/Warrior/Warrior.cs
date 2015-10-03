@@ -6,8 +6,8 @@ using JetBrains.Annotations;
 [RequireComponent(typeof(CharacterController))]
 public class Warrior : MonoBehaviour
 {
-    [SerializeField]
-    private CharacterController charControl;
+    [SerializeField] private CharacterController charControl;
+    [SerializeField] private SkillCaster caster;
 
     public void Move(Vector3 motion)
     {
@@ -17,5 +17,10 @@ public class Warrior : MonoBehaviour
     public void Aim(Vector3 direction)
     {
         transform.LookAt(transform.position + direction);
+    }
+
+    public void Attack()
+    {
+        caster.Attack();
     }
 }

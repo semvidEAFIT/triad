@@ -25,7 +25,10 @@ public class Triad : MonoBehaviour, IInputListener
 
     public void Attack(EAttack[] attack)
     {
-        //TODO: Implement Skill Casting 
+        foreach (EAttack a in attack)
+        {
+            warriors[(int)a].Attack();
+        }
     }
 
     public void Motion(Vector2 direction)

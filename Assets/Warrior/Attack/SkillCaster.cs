@@ -3,16 +3,11 @@ using System.Collections;
 
 public class SkillCaster : MonoBehaviour
 {
+    [SerializeField]
+    private SwordAttack skill;
 
-    public ISkill attack;
-
-    // Use this for initialization
-    void Start()
+    public void Attack()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        skill.Cast();
     }
 }

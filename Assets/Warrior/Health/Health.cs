@@ -3,30 +3,24 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 
-    private float health = 100; 
+    public float health = 100;
+    public Renderer renderer;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private void Awake()
+    {
+        renderer = GetComponent<Renderer>();
+    }
 
-    public float getHeath()
+    public float GetHeath()
     {
         return health;
     }
 
-    public void setDamage(float damage)
+    public void SetDamage(float damage)
     {
         health = health - damage;
-    }
-
-    public void regeneration()
-    {
-        health = health + (Time.deltaTime * 0.1f);
+        renderer.material.color = Color.white + Color.red * (health / 100f);
+        if (health <= 0)
+            Destroy(gameObject);
     }
 }
