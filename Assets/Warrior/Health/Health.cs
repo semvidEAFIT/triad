@@ -19,8 +19,9 @@ public class Health : MonoBehaviour {
     public void SetDamage(float damage)
     {
         health = health - damage;
-        renderer.material.color = Color.white + Color.red * (health / 100f);
+        renderer.material.color = renderer.material.color + Color.red * (health / 100f);
         if (health <= 0)
             Destroy(gameObject);
     }
 }
+    
