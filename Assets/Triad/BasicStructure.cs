@@ -4,12 +4,13 @@ using System;
 public class BasicStructure : Structure
 {
 
-    public float distance = 1.5f;
-    public float speed = 1.0f;
+    public float distance = 4f;
+    public float speed = 8f;
+    public float rootSpeed = 10;
 
     public override void Move(Vector3 direction)
     {
-        charController.SimpleMove(direction * speed);
+        charController.SimpleMove(direction * rootSpeed);
     }
 
     public override void Aim(Vector3 direction)

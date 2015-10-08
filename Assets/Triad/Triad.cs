@@ -11,8 +11,6 @@ public class Triad : MonoBehaviour, IInputListener
     [SerializeField]
     private Structure structure;
 
-    public float speed;
-
     public Warrior[] Warriors
     {
         get { return warriors; }
@@ -34,7 +32,7 @@ public class Triad : MonoBehaviour, IInputListener
     public void Motion(Vector2 direction)
     {
         Vector3 v = new Vector3(direction.x, 0, direction.y);
-        structure.Move(v * speed);
+        structure.Move(v);
     }
 
     public void Aim(Vector2 direction)
