@@ -1,37 +1,39 @@
 ﻿using UnityEngine;
 using System;
 
-public class BasicStructure : Structure
+
+namespace Triad.Warriors.Movement
 {
-
-    public float distance = 4f;
-    public float speed = 8f;
-    public float rootSpeed = 10;
-
-    public override void Move(Vector3 direction)
+    public class BasicStructure : Structure
     {
-        charController.SimpleMove(direction * rootSpeed);
-    }
+        public float distance = 4f;
+        public float speed = 8f;
+        public float rootSpeed = 10;
 
-    public override void Aim(Vector3 direction)
-    {
-        transform.LookAt(transform.position + direction);
-        foreach (Warrior w in triad.Warriors)
+        public override void Move(Vector3 direction)
         {
-            w.Aim(direction);
-            //direction = Quaternion.AngleAxis(120, Vector3.up) * direction;
+            charController.SimpleMove(direction * rootSpeed);
         }
-    }
 
-    void Update()
-    {
-        Vector3 direction = transform.forward;
-        foreach (Warrior w in triad.Warriors)
+        public override void Aim(Vector3 direction)
         {
-            Vector3 shouldBe = transform.position + direction*distance;
-            Vector3 motion = (shouldBe - w.transform.position) * speed;
-            w.Move(motion);
-            direction = Quaternion.AngleAxis(120, Vector3.up) * direction;
+            transform.LookAt(transform.position + direction);
+            foreach (Motion w in motors)
+            {
+                w.Aim(direction);
+            }
+        }
+
+        void Update()
+        {
+            Vector3 direction = transform.forward;
+            foreach (Motion w in motors)
+            {
+                Vector3 shouldBe = transform.position + direction * distance;
+                Vector3 motion = (shouldBe - w.transform.position) * speed;
+                w.Move(motion);
+                direction = Quaternion.AngleAxis(120, Vector3.up) * direction;
+            }
         }
     }
 }

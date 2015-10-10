@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkillCaster : MonoBehaviour
+namespace Triad.Warriors.Skills
 {
-    [SerializeField]
-    private SwordAttack skill;
-    [SerializeField]
-    private Animator animator;
-    [SerializeField]
-    private string attackTrigger;
-
-    public void Attack()
+    public class SkillCaster : MonoBehaviour
     {
-        skill.Cast();
-        animator.SetTrigger(attackTrigger);
+        [SerializeField]
+        private SwordAttack skill;
+        [SerializeField]
+        private Animator animator;
+        [SerializeField]
+        private string attackTrigger;
+
+        public void Attack()
+        {
+            skill.Cast();
+            animator.SetTrigger(attackTrigger);
+        }
     }
 }

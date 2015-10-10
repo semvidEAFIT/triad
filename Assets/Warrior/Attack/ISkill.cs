@@ -1,5 +1,7 @@
-﻿
-public interface ISkill
+﻿namespace Triad.Warriors.Skills
 {
-    void Cast();
+    public interface ISkill
+    {
+        void Cast();
+    }
 }

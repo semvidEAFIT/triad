@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(CharacterController))]
-public abstract class Structure : MonoBehaviour
+namespace Triad.Warriors.Movement
 {
-    [SerializeField]
-    protected CharacterController charController;
-    public Triad triad;
+    [RequireComponent(typeof(CharacterController))]
+    public abstract class Structure : MonoBehaviour
+    {
+        [SerializeField]
+        protected CharacterController charController;
+        public Motion[] motors;
 
-    public abstract void Move(Vector3 direction);
-    public abstract void Aim(Vector3 direction);
+        public abstract void Move(Vector3 direction);
+        public abstract void Aim(Vector3 direction);
+    }
 }

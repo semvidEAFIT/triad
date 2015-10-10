@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using Triad.Controls;
 
 public class InputLogger : MonoBehaviour, IInputListener {
 

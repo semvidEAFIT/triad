@@ -1,65 +1,68 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Generator : MonoBehaviour
+namespace Triad.Enemies
 {
-
-    public GameObject[] dummies;
-
-    public float minSpawnRate = 10;
-    public float maxSpawnRate = 20;
-    public float rMax = 20;
-    public int initialCount = 20;
-
-    private float angleDeg;
-
-    private float r;
-
-    private float timeToSpawnNext;
-
-    private float timeSinceLastSpawnw = 0;
-
-    private void Awake()
+    public class Generator : MonoBehaviour
     {
-        timeToSpawnNext = minSpawnRate;
-    }
 
-    private void Start()
-    {
-        for (int i = 0; i < initialCount; i++)
+        public GameObject[] dummies;
+
+        public float minSpawnRate = 10;
+        public float maxSpawnRate = 20;
+        public float rMax = 20;
+        public int initialCount = 20;
+
+        private float angleDeg;
+
+        private float r;
+
+        private float timeToSpawnNext;
+
+        private float timeSinceLastSpawnw = 0;
+
+        private void Awake()
         {
-            Spawn();
+            timeToSpawnNext = minSpawnRate;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timeSinceLastSpawnw += Time.deltaTime;
+        private void Start()
+        {
+            for (int i = 0; i < initialCount; i++)
+            {
+                Spawn();
+            }
+        }
 
-        if (timeSinceLastSpawnw > timeToSpawnNext)
-            Spawn();
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            timeSinceLastSpawnw += Time.deltaTime;
 
-    private void Spawn()
-    {
-        angleDeg = Random.Range(0, 360);
-        r = Random.Range(0, rMax);
+            if (timeSinceLastSpawnw > timeToSpawnNext)
+                Spawn();
+        }
 
-        float x = r * Mathf.Cos(angleDeg);
-        float z = r * Mathf.Sin(angleDeg);
+        private void Spawn()
+        {
+            angleDeg = Random.Range(0, 360);
+            r = Random.Range(0, rMax);
 
-        int objectIndex = Random.Range(0, dummies.Length);
-        GameObject.Instantiate(dummies[objectIndex], transform.position + new Vector3(x, dummies[objectIndex].transform.position.y, z), Quaternion.identity);
+            float x = r * Mathf.Cos(angleDeg);
+            float z = r * Mathf.Sin(angleDeg);
 
-        timeToSpawnNext = Random.Range(minSpawnRate, maxSpawnRate);
+            int objectIndex = Random.Range(0, dummies.Length);
+            GameObject.Instantiate(dummies[objectIndex], transform.position + new Vector3(x, dummies[objectIndex].transform.position.y, z), Quaternion.identity);
 
-        timeSinceLastSpawnw = 0;
-    }
+            timeToSpawnNext = Random.Range(minSpawnRate, maxSpawnRate);
 
-    private void OnDrawGizmos()
-    {
-        //Gizmos.color = Color.yellow;
-        //Gizmos.DrawSphere(transform.position, rMax);
+            timeSinceLastSpawnw = 0;
+        }
+
+        private void OnDrawGizmos()
+        {
+            //Gizmos.color = Color.yellow;
+            //Gizmos.DrawSphere(transform.position, rMax);
+        }
     }
 }
